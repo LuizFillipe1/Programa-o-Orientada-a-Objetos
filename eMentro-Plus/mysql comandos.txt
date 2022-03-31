@@ -1,0 +1,44 @@
+Create table usuarios (
+ID Int UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+login Varchar(30),
+senha Varchar(40),
+nivelAcesso Int,
+Primary Key (ID)) ENGINE = MyISAM;
+
+
+insert into usuarios (login, senha, nivelAcesso) values ('Diretor', 'ufes2021', 3);
+
+
+
+// trocando o nivel de acesso para verificação de funcionalidade
+
+UPDATE usuarios set nivelAcesso = 2 WHERE login= 'Diretor';
+
+
+
+Create table pessoa(
+nome Varchar(64),
+CPF Varchar(40),
+telefone Varchar(16),
+dataNascimento Varchar(12));
+
+Create table professores(
+nome Varchar(64),
+CPF Varchar(40),
+dataAdmissao Varchar(12),
+salarioBruto DECIMAL(26,14));
+
+
+SELECT pessoa.nome, pessoa.CPF, pessoa.dataNascimento, pessoa.telefone, professores.dataAdmissao, professores.salarioBruto FROM pessoa, professores WHERE pessoa.CPF = professores.CPF ORDER BY nome;
+ 
+Create table alunos(
+nome Varchar(64),
+CPF Varchar(40),
+matricula Varchar(12),
+periodo Varchar(12));
+
+
+SELECT pessoa.nome, pessoa.CPF, pessoa.dataNascimento, pessoa.telefone, alunos.matricula, alunos.periodo FROM pessoa, alunos WHERE pessoa.CPF = alunos.CPF ORDER BY nome;
+
+
+"update ementor.pessoa set nome='"+nome+"', CPF='"+CPF+"', dataAdmissao='"+dataAdmissao+"', salarioBruto='"+salarioBruto+"' where professor.CPF='"+CPF+"';";
